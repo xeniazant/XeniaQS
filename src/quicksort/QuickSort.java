@@ -5,6 +5,8 @@
  */
 package quicksort;
 
+import java.util.Arrays;
+
 /**
  *
  * @author xeniazantello
@@ -16,6 +18,15 @@ public class QuickSort {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        QuickSort t0 = new QuickSort();
+        int[] test0 = {6,2,21,3,8,7,9,11,4,5,6};
+        System.out.println(Arrays.toString(test0));
+        t0.quickSort(test0 , 0 , test0.length - 1);
+        System.out.println(Arrays.toString(test0));
+    }
+    
+    public QuickSort(){ // Xenia getting around non-static context error
     }
     
     /*
@@ -45,7 +56,7 @@ public class QuickSort {
     private int partition(int[] array, int start, int end){
         int pivot = array[end];
         int sb = start -1; // sb (small bucket) is a variable describing the largest inclusive index of the smaller bucket
-        for(int i = start; i < end -1; i ++){
+        for(int i = start; i <= end -1; i ++){
             if(array[i] <= pivot){
                 sb ++;
                 int holder = array[sb]; // holder simply hold one of the values we are swapping so it is not destroyed.
