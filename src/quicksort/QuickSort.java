@@ -28,12 +28,32 @@ public class QuickSort {
     sorted order.
     */
     
+    public static void quickSort(int[] array, int start, int end ){
+    
+    }
     
     /*
     24 points: You will need to define a private (helper) method called partition as in the slides/textbook, 
     which is invoked by quicksort. The parameters are the same as quicksort, but partition also returns an 
     int index used by quicksort to divide the two recursive subproblems.
     */
+    
+    private int partition(int[] array, int start, int end){
+        int pivot = array[end];
+        int sb = start -1; // sb (small bucket) is a variable describing the largest inclusive index of the smaller bucket
+        for(int i = start; i < end -1; i ++){
+            if(array[i] <= pivot){
+                sb ++;
+                int holder = array[sb]; // holder simply hold one of the values we are swapping so it is not destroyed.
+                array[sb] = array[i];
+                array[i] = holder;
+            }
+        }
+        int holder1 = array[sb + 1]; //holder 1 works the same as holder except for this swap
+        array[sb + 1] = array[end];
+        array[end] = holder1;
+        return sb + 1;
+    }
     
     
     /*
