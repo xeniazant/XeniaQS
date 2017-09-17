@@ -28,8 +28,12 @@ public class QuickSort {
     sorted order.
     */
     
-    public static void quickSort(int[] array, int start, int end ){
-    
+    public void quickSort(int[] array, int start, int end ){
+        if(start < end){
+            int split = partition(array , start , end); //split 2 subproblems at split (which i felt was a better var name than 'q')
+            quickSort(array , start , split - 1);
+            quickSort(array , split + 1 , end);
+        }
     }
     
     /*
