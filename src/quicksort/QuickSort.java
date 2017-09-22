@@ -9,6 +9,7 @@
 package quicksort;
 
 import java.util.Arrays;
+import java.util.Random;
 
 /**
  *
@@ -16,21 +17,24 @@ import java.util.Arrays;
  */
 public class QuickSort {
 
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
         
-        QuickSort t0 = new QuickSort();
+        
         int[] test0 = {6,2,21,3,8,7,9,11,4,5,6};
         System.out.println(Arrays.toString(test0));
-        t0.quickSort(test0 , 0 , test0.length - 1);
+        quickSort(test0 , 0 , test0.length - 1);
         System.out.println(Arrays.toString(test0));
+        int[] test1 = {6,2,21,3,8,7,9,11,4,5,6};
+        randomizedQuickSort(test1 , 0 , test1.length -1);
+        System.out.println(Arrays.toString(test1));
     }
     
-    public QuickSort(){ // Xenia getting around non-static context error
-    }
+    
     
     /*
     12 points: Implement a recursive method named quicksort. Implement quicksort as in the slides/textbook,
@@ -42,7 +46,7 @@ public class QuickSort {
     sorted order.
     */
     
-    public void quickSort(int[] array, int start, int end ){
+    public static void quickSort(int[] array, int start, int end ){
         if(start < end){
             int split = partition(array , start , end); //split 2 subproblems at split (which i felt was a better var name than 'q')
             quickSort(array , start , split - 1);
@@ -56,7 +60,7 @@ public class QuickSort {
     int index used by quicksort to divide the two recursive subproblems.
     */
     
-    private int partition(int[] array, int start, int end){
+    private static int partition(int[] array, int start, int end){
         int pivot = array[end];
         int sb = start -1; // sb (small bucket) is a variable describing the largest inclusive index of the smaller bucket
         for(int i = start; i <= end -1; i ++){
@@ -82,6 +86,28 @@ public class QuickSort {
     subarray, then proceed as above to use the rightmost element as the pivot, by invoking partition and recursing. 
     You may use the java.util.Random class as a random number generator.
     */
+    
+    /**
+     * 
+     * @param array describes the array with values in arbitrary order to be sorted.
+     * @param start describes the first index of the subproblem we are working on (0 in initial call)
+     * @param end describes the last index of the subproblem we are working on (array.length - 1 at initial call)
+     */
+    public static void randomizedQuickSort(int[] array, int start, int end ){
+        
+        Random rndm = new Random(); // made a new random number generator
+        int ran = rndm.nextInt(end); // assigned a random int to var "ran"
+        int holder = array[end]; // made a holder for swapping values so one value is not overwritten and destroyed. 
+        array[end] = array[ran];
+        array[ran] = holder;
+        
+        if(start < end){
+            int split = partition(array , start , end); //split 2 subproblems at split (which I felt was a better var name than 'q')
+            quickSort(array , start , split - 1);
+            quickSort(array , split + 1 , end);
+        }
+    }
+    
     
     
     /*
