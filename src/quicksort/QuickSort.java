@@ -22,7 +22,7 @@ public class QuickSort {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
         
         
         int[] test0 = {6,2,21,3,8,7,9,11,4,5,6};
@@ -60,6 +60,13 @@ public class QuickSort {
     int index used by quicksort to divide the two recursive subproblems.
     */
     
+    /**
+     * 
+     * @param array
+     * @param start
+     * @param end
+     * @return 
+     */
     private static int partition(int[] array, int start, int end){
         int pivot = array[end];
         int sb = start -1; // sb (small bucket) is a variable describing the largest inclusive index of the smaller bucket
