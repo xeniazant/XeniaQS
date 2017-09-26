@@ -25,13 +25,83 @@ public class QuickSort {
         
         
         
-        int[] test0 = {6,2,21,3,8,7,9,11,4,5,6};
-        System.out.println(Arrays.toString(test0));
-        quickSort(test0 , 0 , test0.length - 1);
-        System.out.println(Arrays.toString(test0));
-        int[] test1 = {6,2,21,3,8,7,9,11,4,5,6};
-        randomizedQuickSort(test1 , 0 , test1.length -1);
-        System.out.println(Arrays.toString(test1));
+        
+        int[] QStest0 = {6,2,21,3,8,7,9,11,4,5,6};
+        int[] QStest1 = {73, 38, 64, 49, 4, 57, 60, 70, 43, 31, 15, 39, 48, 51, 56, 33, 13, 62};
+        int[] QStest2 = {7, 15, 36, 11, 16, 8, 12, 27, 22, 10, 32, 38, 21, 18, 13};
+        int[] QStest3 = {85, 90, 17, 60, 97, 74, 14, 66, 92, 34, 55, 88, 62, 95, 4, 57, 20, 10, 38, 81, 94};
+        int[] QStest4 = {39, 15, 13, 19, 36, 9, 17, 35, 2};
+
+        
+        int[] RQStest0 = {6,2,21,3,8,7,9,11,4,5,6};
+        int[] RQStest1 = {73, 38, 64, 49, 4, 57, 60, 70, 43, 31, 15, 39, 48, 51, 56, 33, 13, 62};
+        int[] RQStest2 = {7, 15, 36, 11, 16, 8, 12, 27, 22, 10, 32, 38, 21, 18, 13};
+        int[] RQStest3 = {85, 90, 17, 60, 97, 74, 14, 66, 92, 34, 55, 88, 62, 95, 4, 57, 20, 10, 38, 81, 94};
+        int[] RQStest4 = {39, 15, 13, 19, 36, 9, 17, 35, 2};
+        
+        System.out.println("///--------- Normal Quick Sort test 0 -----------///");
+        
+        System.out.println("Initial array: " + Arrays.toString(QStest0));
+        quickSort(QStest0 , 0 , QStest0.length - 1);
+        System.out.println("Quick-sorted array: " + Arrays.toString(QStest0));
+        
+        System.out.println("///--------- Normal Quick Sort test 1 -----------///");
+        
+        System.out.println("Initial array: " + Arrays.toString(QStest1));
+        quickSort(QStest1 , 0 , QStest1.length - 1);
+        System.out.println("Quick-sorted array: " + Arrays.toString(QStest1));
+        
+        System.out.println("///--------- Normal Quick Sort test 2 -----------///");
+        
+        System.out.println("Initial array: " + Arrays.toString(QStest2));
+        quickSort(QStest2 , 0 , QStest2.length - 1);
+        System.out.println("Quick-sorted array: " + Arrays.toString(QStest2));
+        
+        System.out.println("///--------- Normal Quick Sort test 3 -----------///");
+        
+        System.out.println("Initial array: " + Arrays.toString(QStest3));
+        quickSort(QStest3 , 0 , QStest3.length - 1);
+        System.out.println("Quick-sorted array: " + Arrays.toString(QStest3));
+        
+        System.out.println("///--------- Normal Quick Sort test 4 -----------///");
+        
+        System.out.println("Initial array: " + Arrays.toString(QStest4));
+        quickSort(QStest4 , 0 , QStest4.length - 1);
+        System.out.println("Quick-sorted array: " + Arrays.toString(QStest4));
+        
+        
+        
+        System.out.println("///--------- Randomized Quick Sort test 0 -----------///");
+        
+        System.out.println("Initial array: " + Arrays.toString(RQStest0));
+        randomizedQuickSort(RQStest0 , 0 , RQStest0.length -1);
+        System.out.println("Randomized-Quick-sorted array: " + Arrays.toString(RQStest0));
+        
+        System.out.println("///--------- Randomized Quick Sort test 1 -----------///");
+        
+        System.out.println("Initial array: " + Arrays.toString(RQStest1));
+        randomizedQuickSort(RQStest1 , 0 , RQStest1.length -1);
+        System.out.println("Randomized-Quick-sorted array: " + Arrays.toString(RQStest1));
+        
+        System.out.println("///--------- Randomized Quick Sort test 2 -----------///");
+        
+        System.out.println("Initial array: " + Arrays.toString(RQStest2));
+        randomizedQuickSort(RQStest2 , 0 , RQStest2.length -1);
+        System.out.println("Randomized-Quick-sorted array: " + Arrays.toString(RQStest2));
+        
+        System.out.println("///--------- Randomized Quick Sort test 3 -----------///");
+        
+        System.out.println("Initial array: " + Arrays.toString(RQStest3));
+        randomizedQuickSort(RQStest3 , 0 , RQStest3.length -1);
+        System.out.println("Randomized-Quick-sorted array: " + Arrays.toString(RQStest3));
+        
+        System.out.println("///--------- Randomized Quick Sort test 4 -----------///");
+        
+        System.out.println("Initial array: " + Arrays.toString(RQStest4));
+        randomizedQuickSort(RQStest4 , 0 , RQStest4.length -1);
+        System.out.println("Randomized-Quick-sorted array: " + Arrays.toString(RQStest4));
+        
+        
     }
     
     
@@ -46,6 +116,12 @@ public class QuickSort {
     sorted order.
     */
     
+    /**
+     * 
+     * @param array describes the array with values in arbitrary order to be sorted.
+     * @param start describes the first index of the subproblem we are working on (0 in initial call)
+     * @param end describes the last index of the subproblem we are working on (array.length - 1 at initial call)
+     */
     public static void quickSort(int[] array, int start, int end ){
         if(start < end){
             int split = partition(array , start , end); //split 2 subproblems at split (which i felt was a better var name than 'q')
@@ -62,10 +138,10 @@ public class QuickSort {
     
     /**
      * 
-     * @param array
-     * @param start
-     * @param end
-     * @return 
+     * @param array describes the array with values in arbitrary order to be sorted.
+     * @param start describes the first index of the subproblem we are working on (0 in initial call)
+     * @param end describes the last index of the subproblem we are working on (array.length - 1 at initial call)
+     * @return an int value representing the index of our partition value which is placed precisely where it will remain in sorted order.
      */
     private static int partition(int[] array, int start, int end){
         int pivot = array[end];
@@ -101,20 +177,20 @@ public class QuickSort {
      * @param end describes the last index of the subproblem we are working on (array.length - 1 at initial call)
      */
     public static void randomizedQuickSort(int[] array, int start, int end ){
-        
-        Random rndm = new Random(); // made a new random number generator
-        int ran = rndm.nextInt(end); // assigned a random int to var "ran"
-        int holder = array[end]; // made a holder for swapping values so one value is not overwritten and destroyed. 
-        array[end] = array[ran];
-        array[ran] = holder;
-        
         if(start < end){
+            Random rndm = new Random(); // made a new random number generator
+            int ran = rndm.nextInt((end - start) + 1 ) + start;
+            
+            int holder = array[end]; // made a holder for swapping values so one value is not overwritten and destroyed. 
+            array[end] = array[ran];
+            array[ran] = holder;
             int split = partition(array , start , end); //split 2 subproblems at split (which I felt was a better var name than 'q')
-            quickSort(array , start , split - 1);
-            quickSort(array , split + 1 , end);
+            randomizedQuickSort(array , start , split - 1);
+            randomizedQuickSort(array , split + 1 , end);
         }
     }
     
+
     
     
     /*
